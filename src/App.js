@@ -71,7 +71,7 @@ const App = () => {
           <Heading>More than just shorter links</Heading>
           <p style={{ color: "var(--grayish-violet)", marginBottom: "40px" }}>
             Build your brand's recognition and get detailed insights on how your
-            links are performing
+            links are performing.
           </p>
           <Link href="#">Get Started</Link>
         </Hero>
