@@ -5,10 +5,16 @@ import styled from "styled-components";
 import desktop from "../bg-shorten-desktop.svg";
 import mobile from "../bg-shorten-mobile.svg";
 
+import axios from "axios";
+
+import { CopyToClipboard } from "react-copy-to-clipboard";
+
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from "@material-ui/lab/Alert";
+
 const Container = styled.div`
   max-width: 1000px;
   margin-top: 40px;
-  margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
@@ -94,21 +100,36 @@ const Form = () => {
   const [error, setError] = useState(false);
   const data = useRef({});
   const [links, setLinks] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const close = () => {
+    setErrorMessage("");
+  };
   const submitHandler = (event) => {
     event.preventDefault();
     if (link.trim().length === 0) {
       setError(true);
       return;
     }
-    fetch(`https://api.shrtco.de/v2/shorten?url=${link}`)
-      .then((response) => response.json())
-      .then((json) => {
-        data.current = json.result;
+    setLoading(true);
+    axios
+      .get(`https://api.shrtco.de/v2/shorten?url=${link}`)
+      .then((response) => {
+        data.current = response.data.result;
         setLinks((links) => {
           return [...links, data.current];
         });
+        setLoading(false);
+        setLink("");
+      })
+      .catch((error) => {
+        setErrorMessage(error.response.data.error);
+        setLoading(false);
       });
-    setLink("");
   };
   return (
     <Container>
@@ -127,20 +148,39 @@ const Form = () => {
               setError(false);
             }}
           />
-          <Button>Shorten It!</Button>
+          <Button>{loading ? "Shortening..." : "Shorten It!"}</Button>
         </MyForm>
       </FormContainer>
       <ListGroup>
         {links.map((link) => {
           return (
-            <ListGroupItem>
+            <ListGroupItem key={link.full_short_link}>
               <div>{link.original_link}</div>
               <p style={{ color: "var(--cyan)" }}>{link.full_short_link}</p>
-              <Button>Copy</Button>
+              <CopyToClipboard
+                text={link.full_short_link}
+                onCopy={() => setOpen(true)}
+              >
+                <Button>Copy</Button>
+              </CopyToClipboard>
             </ListGroupItem>
           );
         })}
       </ListGroup>
+      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Copied to clipboard
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={errorMessage ? true : false}
+        autoHideDuration={3000}
+        onClose={close}
+      >
+        <Alert onClose={close} severity="error">
+          {errorMessage}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };
