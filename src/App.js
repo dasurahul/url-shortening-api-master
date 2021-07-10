@@ -28,7 +28,7 @@ const Hero = styled.div`
     order: 1;
     text-align: center;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
   }
 `;
 
@@ -82,7 +82,7 @@ const App = () => {
       </Container>
       <section style={{ backgroundColor: "#EFF1F7" }}>
         <Form />
-        <div style={{ textAlign: "center", padding: "40px 0" }}>
+        <div style={{ textAlign: "center" }}>
           <h2 style={{ color: "var(--very-dark-violet)", marginBottom: "8px" }}>
             Advanced Statistics
           </h2>
