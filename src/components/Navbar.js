@@ -56,7 +56,7 @@ const Navbar = () => {
   return (
     <Container>
       <Logo>
-        <img src={logo} alt="logo" />
+        <img style={{ display: "block" }} src={logo} alt="logo" />
       </Logo>
       <NavLinksContainer style={{ marginLeft: "35px", marginRight: "35px" }}>
         <NavLink href="#" style={{ marginLeft: "15px", marginRight: "15px" }}>
