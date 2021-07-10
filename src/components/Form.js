@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import styled from "styled-components";
 
@@ -13,6 +13,8 @@ const Container = styled.div`
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+  position: relative;
+  top: -40px;
 `;
 
 const FormContainer = styled.div`
@@ -58,16 +60,55 @@ const Button = styled.button`
   transition: all 300ms;
 `;
 
+const ListGroup = styled.ul`
+  list-style: none;
+  margin: 15px 0;
+`;
+
+const ListGroupItem = styled.li`
+  margin: 15px 0;
+  padding: 15px 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  p {
+    margin-left: auto;
+  }
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: flex-start;
+    p {
+      margin: 0;
+    }
+    button {
+      width: 100%;
+    }
+  }
+`;
+
 const Form = () => {
   const [link, setLink] = useState("");
   const [error, setError] = useState(false);
+  const data = useRef({});
+  const [links, setLinks] = useState([]);
   const submitHandler = (event) => {
     event.preventDefault();
     if (link.trim().length === 0) {
       setError(true);
       return;
     }
-    console.log(link);
+    fetch(`https://api.shrtco.de/v2/shorten?url=${link}`)
+      .then((response) => response.json())
+      .then((json) => {
+        data.current = json.result;
+        setLinks((links) => {
+          return [...links, data.current];
+        });
+      });
+    setLink("");
   };
   return (
     <Container>
@@ -89,6 +130,17 @@ const Form = () => {
           <Button>Shorten It!</Button>
         </MyForm>
       </FormContainer>
+      <ListGroup>
+        {links.map((link) => {
+          return (
+            <ListGroupItem>
+              <div>{link.original_link}</div>
+              <p style={{ color: "var(--cyan)" }}>{link.full_short_link}</p>
+              <Button>Copy</Button>
+            </ListGroupItem>
+          );
+        })}
+      </ListGroup>
     </Container>
   );
 };
