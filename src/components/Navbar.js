@@ -10,11 +10,10 @@ const Container = styled.div`
   margin-right: auto;
   padding-top: 40px;
   padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
   align-items: center;
-  @media (max-width: 800px) {
-    padding: 20px;
-  }
 `;
 
 const Logo = styled.div``;
