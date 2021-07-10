@@ -21,27 +21,6 @@ const Container = styled.div`
   }
 `;
 
-const Image = styled.img`
-  width: 500px;
-  @media (max-width: 1000px) {
-    width: 300px;
-  }
-`;
-
-const Link = styled.a`
-  text-decoration: none;
-  font-weight: 700;
-  color: #fff;
-  background-color: var(--cyan);
-  padding: 12px 26px;
-  border-radius: 25px;
-  &:hover {
-    background-color: var(--light-cyan);
-    color: #fff;
-  }
-  transition: background-color 300ms;
-`;
-
 const Hero = styled.div`
   @media (max-width: 1000px) {
     order: 1;
@@ -59,6 +38,28 @@ const Heading = styled.h1`
   @media (max-width: 1000px) {
     font-size: 40px;
     margin-bottom: 8px;
+  }
+`;
+
+const Link = styled.a`
+  text-decoration: none;
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--cyan);
+  padding: 12px 26px;
+  border-radius: 25px;
+  &:hover {
+    background-color: var(--light-cyan);
+    color: #fff;
+  }
+  transition: background-color 300ms;
+`;
+
+const Image = styled.img`
+  width: 50%;
+  max-width: 500px;
+  @media (max-width: 1000px) {
+    width: 70%;
   }
 `;
 
