@@ -2,6 +2,8 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import image from "./illustration-working.svg";
 
+import Form from "./components/Form";
+
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -78,6 +80,9 @@ const App = () => {
         </Hero>
         <Image src={image} alt="illustration-working" />
       </Container>
+      <section style={{ backgroundColor: "#EFF1F7" }}>
+        <Form />
+      </section>
     </div>
   );
 };
