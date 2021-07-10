@@ -82,6 +82,9 @@ const Form = () => {
             }}
             value={link}
             error={error}
+            onBlur={() => {
+              setError(false);
+            }}
           />
           <Button>Shorten It!</Button>
         </MyForm>
