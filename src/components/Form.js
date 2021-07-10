@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styled from "styled-components";
 
@@ -38,7 +38,8 @@ const Input = styled.input`
   border-radius: 5px;
   padding: 10px 20px;
   font-weight: 500;
-  border: 1px solid transparent;
+  border: 3px solid ${(props) => (props.error ? "var(--red)" : "transparent")};
+  outline: ${(props) => props.error && "none"};
 `;
 
 const Button = styled.button`
@@ -58,11 +59,30 @@ const Button = styled.button`
 `;
 
 const Form = () => {
+  const [link, setLink] = useState("");
+  const [error, setError] = useState(false);
+  const submitHandler = (event) => {
+    event.preventDefault();
+    if (link.trim().length === 0) {
+      setError(true);
+      return;
+    }
+    console.log(link);
+  };
   return (
     <Container>
       <FormContainer desktop={desktop} mobile={mobile}>
-        <MyForm>
-          <Input type="text" placeholder="Shorten a link here..." />
+        <MyForm onSubmit={submitHandler}>
+          <Input
+            type="text"
+            placeholder="Shorten a link here..."
+            onChange={(event) => {
+              setError(false);
+              setLink(event.target.value);
+            }}
+            value={link}
+            error={error}
+          />
           <Button>Shorten It!</Button>
         </MyForm>
       </FormContainer>
