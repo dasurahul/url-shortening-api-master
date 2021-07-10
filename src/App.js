@@ -82,6 +82,15 @@ const App = () => {
       </Container>
       <section style={{ backgroundColor: "#EFF1F7" }}>
         <Form />
+        <div style={{ textAlign: "center", padding: "40px 0" }}>
+          <h2 style={{ color: "var(--very-dark-violet)", marginBottom: "8px" }}>
+            Advanced Statistics
+          </h2>
+          <p style={{ color: "var(--grayish-violet)" }}>
+            Track how your links are performing across the web with our advanced
+            statistics dashboard.
+          </p>
+        </div>
       </section>
     </div>
   );
