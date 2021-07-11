@@ -30,6 +30,8 @@ const FormContainer = styled.div`
   border-radius: 5px;
   @media (max-width: 800px) {
     background-image: url(${(props) => props.mobile});
+    background-repeat: no-repeat;
+    background-position: center;
   }
 `;
 

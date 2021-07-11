@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import image from "./illustration-working.svg";
+import desktop from "./bg-boost-desktop.svg";
+import mobile from "./bg-boost-mobile.svg";
 
 import Form from "./components/Form";
 
@@ -65,6 +67,15 @@ const Image = styled.img`
   }
 `;
 
+const SubHero = styled.div`
+  background-image: url(${(props) => props.desktop});
+  @media (max-width: 1000px) {
+    background-image: url(${(props) => props.mobile});
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+`;
+
 const App = () => {
   return (
     <div>
@@ -92,6 +103,20 @@ const App = () => {
           </p>
         </div>
       </section>
+      <SubHero
+        style={{
+          textAlign: "center",
+          padding: "30px 0",
+          backgroundColor: "var(--dark-violet)",
+        }}
+        desktop={desktop}
+        mobile={mobile}
+      >
+        <h2 style={{ marginBottom: "25px", color: "#fff" }}>
+          Boost your links today
+        </h2>
+        <Link>Get Started</Link>
+      </SubHero>
     </div>
   );
 };
