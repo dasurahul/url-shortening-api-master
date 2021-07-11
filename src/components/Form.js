@@ -19,8 +19,7 @@ const Container = styled.div`
   margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
-  position: relative;
-  top: -40px;
+  transform: translateY(-50%);
 `;
 
 const FormContainer = styled.div`
@@ -50,6 +49,16 @@ const Input = styled.input`
   font-weight: 500;
   border: 3px solid ${(props) => (props.error ? "var(--red)" : "transparent")};
   outline: ${(props) => props.error && "none"};
+  &::placeholder {
+    color: ${(props) => props.error && "var(--red)"};
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: ${(props) => props.error && "var(--red)"};
+  }
+  &::-ms-input-placeholder {
+    color: ${(props) => props.error && "var(--red)"};
+  }
 `;
 
 const Button = styled.button`
