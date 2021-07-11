@@ -3,8 +3,8 @@ import Navbar from "./components/Navbar";
 import image from "./illustration-working.svg";
 import desktop from "./bg-boost-desktop.svg";
 import mobile from "./bg-boost-mobile.svg";
-
 import Form from "./components/Form";
+import Footer from "./components/Footer";
 
 import styled from "styled-components";
 
@@ -106,17 +106,18 @@ const App = () => {
       <SubHero
         style={{
           textAlign: "center",
-          padding: "30px 0",
+          padding: "40px 0",
           backgroundColor: "var(--dark-violet)",
         }}
         desktop={desktop}
         mobile={mobile}
       >
-        <h2 style={{ marginBottom: "25px", color: "#fff" }}>
+        <h2 style={{ marginBottom: "30px", color: "#fff" }}>
           Boost your links today
         </h2>
         <Link>Get Started</Link>
       </SubHero>
+      <Footer />
     </div>
   );
 };
