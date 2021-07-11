@@ -15,6 +15,7 @@ const Container = styled.div`
   @media (max-width: 800px) {
     grid-template-columns: 1fr;
     justify-items: center;
+    text-align: center;
   }
 `;
 
