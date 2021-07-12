@@ -8,6 +8,9 @@ import axios from "axios";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
+import brand from "./icon-brand-recognition.svg";
+import detailed from "./icon-detailed-records.svg";
+import customizable from "./icon-fully-customizable.svg";
 import Footer from "./components/Footer";
 
 import styled from "styled-components";
@@ -118,6 +121,36 @@ const Button = styled.button`
   transition: all 300ms;
 `;
 
+const PapersContainer = styled.div`
+  display: flex;
+  gap: 30px;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+`;
+
+const Paper = styled.div`
+  max-width: 380px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 45px 40px;
+  & img {
+    background-color: var(--dark-violet);
+    padding: 20px;
+    border-radius: 50%;
+    transform: translateY(-100%);
+  }
+  & h3 {
+    margin-bottom: 15px;
+    color: var(--dark-violet);
+  }
+  & p {
+    color: var(--grayish-violet);
+  }
+`;
+
 const SubHero = styled.div`
   background-image: url(${(props) => props.desktop});
   background-repeat: no-repeat;
@@ -171,7 +204,7 @@ const App = () => {
         </Hero>
         <Image src={image} alt="illustration-working" />
       </Container>
-      <section style={{ backgroundColor: "#EFF1F7" }}>
+      <section style={{ backgroundColor: "#EFF1F7", paddingBottom: "60px" }}>
         <Form onSubmit={submitHandler} loading={loading} />
         <ListGroup style={{ maxWidth: "1000px" }}>
           {links.map((link) => {
@@ -189,11 +222,16 @@ const App = () => {
             );
           })}
         </ListGroup>
-        <div style={{ textAlign: "center" }}>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "80px",
+            marginBottom: "80px",
+          }}
+        >
           <h2
             style={{
               color: "var(--very-dark-violet)",
-              marginTop: "60px",
               marginBottom: "8px",
             }}
           >
@@ -204,6 +242,35 @@ const App = () => {
             statistics dashboard.
           </p>
         </div>
+        <PapersContainer
+          style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 20px" }}
+        >
+          <Paper>
+            <img src={brand} alt="brand-recognition" />
+            <h3>Brand Recognition</h3>
+            <p>
+              Boost your brand recognition with each click.Generic links don't
+              mean a thing.Branded links help instil confidence in your content.
+            </p>
+          </Paper>
+          <Paper>
+            <img src={detailed} alt="detailed-records" />
+            <h3>Detailed Records</h3>
+            <p>
+              Gain insights into who is clicking your links. Knowing when and
+              where people engage with your content helps inform better
+              decisions.
+            </p>
+          </Paper>
+          <Paper>
+            <img src={customizable} alt="fully-customizable" />
+            <h3>Fully Customizable</h3>
+            <p>
+              Improved brand awareness and content discoverability through
+              customizable links, supercharging audience engagement.
+            </p>
+          </Paper>
+        </PapersContainer>
       </section>
       <SubHero
         style={{
