@@ -26,12 +26,16 @@ const LinksContainer = styled.div`
 `;
 
 const Heading = styled.h4`
-  margin: 30px 0;
+  margin-bottom: 30px;
+  @media (max-width: 800px) {
+    margin-top: 30px;
+  }
 `;
 
 const Link = styled.div`
   margin-bottom: 15px;
   transition: color 300ms;
+  color: var(--grayish-violet);
   &:hover {
     cursor: pointer;
     color: var(--cyan);
@@ -39,7 +43,9 @@ const Link = styled.div`
 `;
 
 const IconsContainer = styled.div`
-  margin-top: 30px;
+  @media (max-width: 800px) {
+    margin-top: 30px;
+  }
 `;
 
 const Icon = styled.img`
@@ -50,7 +56,7 @@ const Footer = () => {
   return (
     <div style={{ backgroundColor: "var(--very-dark-violet)" }}>
       <Container>
-        <h2 style={{ marginTop: "30px" }}>Shortly</h2>
+        <h2 style={{ marginBottom: "30px" }}>Shortly</h2>
         <LinksContainer
           style={{ display: "flex", justifyContent: "space-between" }}
         >
