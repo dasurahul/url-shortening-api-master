@@ -76,7 +76,7 @@ const ListGroup = styled.ul`
 `;
 
 const ListGroupItem = styled.li`
-  margin: 15px 0;
+  margin-bottom: 15px;
   padding: 15px 30px;
   background-color: #fff;
   border-radius: 5px;
@@ -169,11 +169,7 @@ const App = () => {
         <Image src={image} alt="illustration-working" />
       </Container>
       <section style={{ backgroundColor: "#EFF1F7" }}>
-        <Form
-          onSubmit={submitHandler}
-          loading={loading}
-          setLoading={setLoading}
-        />
+        <Form onSubmit={submitHandler} loading={loading} />
         <ListGroup style={{ maxWidth: "1000px", margin: "0 auto" }}>
           {links.map((link) => {
             return (
