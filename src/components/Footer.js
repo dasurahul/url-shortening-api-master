@@ -8,7 +8,7 @@ import instagram from "../icon-instagram.svg";
 const Container = styled.div`
   max-width: 1000px;
   margin: 0 auto;
-  padding: 50px 20px;
+  padding: 60px 20px;
   color: #fff;
   display: grid;
   grid-template-columns: 3fr 9fr;

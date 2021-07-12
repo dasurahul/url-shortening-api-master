@@ -117,6 +117,8 @@ const Button = styled.button`
 
 const SubHero = styled.div`
   background-image: url(${(props) => props.desktop});
+  background-repeat: no-repeat;
+  background-position: center;
   @media (max-width: 1000px) {
     background-image: url(${(props) => props.mobile});
     background-repeat: no-repeat;
@@ -142,7 +144,7 @@ const App = () => {
         setLoading(false);
       })
       .catch((error) => {
-        setErrorMessage(error.response.data.error);
+        setErrorMessage("Something went wrong");
         setLoading(false);
       });
   };
@@ -207,7 +209,7 @@ const App = () => {
       <SubHero
         style={{
           textAlign: "center",
-          padding: "40px 0",
+          padding: "80px 0",
           backgroundColor: "var(--dark-violet)",
         }}
         desktop={desktop}
